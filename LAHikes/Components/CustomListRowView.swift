@@ -1,5 +1,5 @@
 //
-//  CustomListRow.swift
+//  CustomListRowView.swift
 //  LAHikes
 //
 //  Created by David Doswell on 2/3/24.
@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomListRowView: View {
+  
   // MARK: - PROPERTIES
   
   @State var rowLabel: String
@@ -17,6 +18,8 @@ struct CustomListRowView: View {
   @State var rowLinkLabel: String? = nil
   @State var rowLinkDestination: String? = nil
   
+  // MARK: - BODY
+
   var body: some View {
     LabeledContent {
       // Content

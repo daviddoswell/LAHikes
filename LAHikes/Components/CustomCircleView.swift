@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct CustomCircleView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+  
+  // MARK: - PROPERTIES
+
+  @State private var isAnimateGradient: Bool = false
+  
+  // MARK: - BODY
+  
+  var body: some View {
+    ZStack {
+      Circle()
+        .fill(
+          LinearGradient(
+            colors: [
+              .colorIndigoMedium,
+              .colorSalmonLight
+            ],
+            startPoint:
+              isAnimateGradient ?
+              .topLeading : .bottomLeading,
+            endPoint: isAnimateGradient ? .bottomTrailing : .topTrailing)
+        )
+        .onAppear {
+          withAnimation(
+            .linear(duration: 3.0)
+            .repeatForever(autoreverses: true)) {
+              isAnimateGradient.toggle()
+            }
+        }
+      MotionAnimationView()
+    } //: ZSTACK
+    .frame(width: 256.0, height: 256.0)
+  }
 }
 
 #Preview {
-    CustomCircleView()
+  CustomCircleView()
 }

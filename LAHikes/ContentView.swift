@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+  
+  // MARK: - PROPERTIES
+  
+  @Environment(\.colorScheme) var colorScheme
+  
+  // MARK: - BODY
+
+  var body: some View {
+    ZStack {
+      Color.customGreenLight
+        .ignoresSafeArea()
+      
+      // MARK: - CARD VIEW
+
+      CardView()
+        .foregroundStyle(colorScheme == .dark ? .white : .black)
     }
+  }
 }
 
 #Preview {
-    ContentView()
+  ContentView()
 }
